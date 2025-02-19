@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 NortN. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="nortn_tab" translate="label" sortOrder="100">
+            <label>NortN</label>
+        </tab>
+        <section id="nortn_pagebuilder" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>PageBuilder</label>
+            <tab>nortn_tab</tab>
+            <resource>NortN_PageBuilderAdvancedColumns::config</resource>
+            <group id="columns" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Advanced Columns</label>
+                <field id="gap_sizes" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Flex Gap Sizes</label>
+                    <comment>Enter comma-separated values (e.g. 10px, 20px, 30px)</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

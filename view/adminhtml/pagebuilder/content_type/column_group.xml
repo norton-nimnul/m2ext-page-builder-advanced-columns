@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 NortN. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="column-group">
+        <appearances>
+            <appearance name="default">
+                <elements>
+                    <element name="main">
+                        <style name="gap" source="gap"/>
+                        <static_style source="display" value="flex"/>
+                        <static_style source="flex_direction" value="column"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+    </type>
+</config>

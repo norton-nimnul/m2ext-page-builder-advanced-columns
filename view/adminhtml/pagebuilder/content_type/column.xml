@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2025 NortN. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
+    <type name="column">
+        <appearances>
+            <appearance name="full-height"
+                        preview_template="NortN_PageBuilderAdvancedColumns/content-type/column/full-height/preview">
+                <elements>
+                    <element name="main">
+                        <style name="flex_basis" source="flex_basis" converter="Magento_PageBuilder/js/converter/style/width"/>
+                        <style name="gap" source="gap"/>
+                    </element>
+                    <element name="container">
+                        <static_style source="flex_grow" value="1"/>
+                    </element>
+                </elements>
+            </appearance>
+            <appearance name="align-top"
+                        preview_template="NortN_PageBuilderAdvancedColumns/content-type/column/full-height/preview">
+                <elements>
+                    <element name="main">
+                        <style name="flex_basis" source="flex_basis"/>
+                        <style name="gap" source="gap"/>
+                    </element>
+                    <element name="container">
+                        <static_style source="flex_grow" value="1"/>
+                    </element>
+                </elements>
+            </appearance>
+            <appearance name="align-center"
+                        preview_template="NortN_PageBuilderAdvancedColumns/content-type/column/full-height/preview">
+                <elements>
+                    <element name="main">
+                        <style name="flex_basis" source="flex_basis"/>
+                        <style name="gap" source="gap"/>
+                    </element>
+                    <element name="container">
+                        <static_style source="flex_grow" value="1"/>
+                    </element>
+                </elements>
+            </appearance>
+            <appearance name="align-bottom"
+                        preview_template="NortN_PageBuilderAdvancedColumns/content-type/column/full-height/preview">
+                <elements>
+                    <element name="main">
+                        <style name="flex_basis" source="flex_basis"/>
+                        <style name="gap" source="gap"/>
+                    </element>
+                    <element name="container">
+                        <static_style source="flex_grow" value="1"/>
+                    </element>
+                </elements>
+            </appearance>
+        </appearances>
+    </type>
+</config>
