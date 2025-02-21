@@ -9,7 +9,7 @@ function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.crea
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
-define(["jquery", "knockout", "mage/translate", "Magento_PageBuilder/js/events", "Magento_Ui/js/modal/alert", "Magento_PageBuilder/js/config", "Magento_PageBuilder/js/content-type-factory", "Magento_PageBuilder/js/content-type-menu/option", "Magento_PageBuilder/js/content-type/column-group/grid-size", "Magento_PageBuilder/js/content-type/column-line/preview", "Magento_PageBuilder/js/content-type/preview-collection", "NortN_PageBuilderAdvancedColumns/js/content-type/column/resize"], function (_jquery, _knockout, _translate, _events, _alert, _config, _contentTypeFactory, _option, _gridSize, _preview, _previewCollection, _resize) {
+define(["jquery", "knockout", "mage/translate", "Magento_PageBuilder/js/events", "Magento_Ui/js/modal/alert", "Magento_PageBuilder/js/config", "Magento_PageBuilder/js/content-type-factory", "Magento_PageBuilder/js/content-type-menu/option", "Magento_PageBuilder/js/content-type/column-group/grid-size", "Magento_PageBuilder/js/content-type/column-line/preview", "Magento_PageBuilder/js/content-type/preview-collection", "Magento_PageBuilder/js/content-type/column/resize"], function (_jquery, _knockout, _translate, _events, _alert, _config, _contentTypeFactory, _option, _gridSize, _preview, _previewCollection, _resize) {
   /**
    * Copyright © Magento, Inc. All rights reserved.
    * See COPYING.txt for license details.
@@ -43,11 +43,13 @@ define(["jquery", "knockout", "mage/translate", "Magento_PageBuilder/js/events",
       _this.resizing = _knockout.observable(false);
       _this.fieldsToIgnoreOnRemove = ["width"];
 
-      _this.contentType.dataStore.subscribe(_this.updateColumnWidthClass.bind(_assertThisInitialized(_this)), "flex_basis");
+      _this.contentType.dataStore.subscribe(_this.updateColumnWidthClass.bind(_assertThisInitialized(_this)), "width");
 
-      _this.contentType.dataStore.subscribe(_this.updateDisplayLabel.bind(_assertThisInitialized(_this)), "flex_basis");
+      _this.contentType.dataStore.subscribe(_this.updateDisplayLabel.bind(_assertThisInitialized(_this)), "width");
 
-      _this.contentType.dataStore.subscribe(_this.triggerChildren.bind(_assertThisInitialized(_this)), "flex_basis");
+      _this.contentType.dataStore.subscribe(_this.triggerChildren.bind(_assertThisInitialized(_this)), "width");
+
+      _this.contentType.dataStore.subscribe(_this.updateFlexBasis.bind(_assertThisInitialized(_this)), "width");
 
       _this.contentType.parentContentType.dataStore.subscribe(_this.updateDisplayLabel.bind(_assertThisInitialized(_this)), "grid_size"); // Update the column number for the column
 
@@ -286,8 +288,7 @@ define(["jquery", "knockout", "mage/translate", "Magento_PageBuilder/js/events",
 
     _proto.updateDisplayLabel = function updateDisplayLabel() {
       if (this.contentType.parentContentType.preview instanceof _preview) {
-        // var newWidth = parseFloat(this.contentType.dataStore.get("width").toString());
-        var newWidth = parseFloat(this.contentType.dataStore.get("flex_basis").toString());
+        var newWidth = parseFloat(this.contentType.dataStore.get("width").toString());
         var grandParent = this.contentType.parentContentType.parentContentType;
         var columnGroupPreview = grandParent.preview;
         var gridSize = columnGroupPreview.gridSize();
@@ -349,7 +350,7 @@ define(["jquery", "knockout", "mage/translate", "Magento_PageBuilder/js/events",
         this.element.removeClass(currentClass[1]);
       }
 
-      var roundedWidth = Math.ceil(parseFloat(this.contentType.dataStore.get("flex_basis").toString()) / 10) * 10;
+      var roundedWidth = Math.ceil(parseFloat(this.contentType.dataStore.get("width").toString()) / 10) * 10;
       this.element.addClass("column-width-" + roundedWidth);
     }
     /**
@@ -417,11 +418,19 @@ define(["jquery", "knockout", "mage/translate", "Magento_PageBuilder/js/events",
 
     _proto.triggerChildren = function triggerChildren() {
       if (this.contentType.parentContentType.preview instanceof _preview) {
-        var newWidth = parseFloat(this.contentType.dataStore.get("flex_basis").toString());
+        var newWidth = parseFloat(this.contentType.dataStore.get("width").toString());
         this.delegate("trigger", "columnWidthChangeAfter", {
-          flexBasis: newWidth
+          width: newWidth
         });
       }
+    };
+    /**
+     * Update flex-basis equally to width
+     */
+    ;
+
+    _proto.updateFlexBasis = function updateFlexBasis() {
+      this.contentType.dataStore.set('flex_basis', this.contentType.dataStore.get('width'));
     };
 
     return Preview;
