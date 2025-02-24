@@ -20,7 +20,7 @@ Stores -> Configuration -> NortN -> PageBuilder
 ## Installation
 To install the module from Packagist, run the following commands:
 ```sh
-composer require nortn/module-pagebuilder-advanced-columns
+composer require nortn/module-page-builder-advanced-columns
 bin/magento module:enable NortN_PageBuilderAdvancedColumns
 bin/magento setup:upgrade
 bin/magento cache:flush
