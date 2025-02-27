@@ -1,0 +1,13 @@
+/**
+ * Copyright © 2025 NortN. All rights reserved.
+ */
+
+#html-body {
+    [data-content-type="column"] {
+        @apply !w-full;
+    }
+
+    [data-content-type="column-line"] {
+        @apply flex flex-col md:flex-row;
+    }
+}
