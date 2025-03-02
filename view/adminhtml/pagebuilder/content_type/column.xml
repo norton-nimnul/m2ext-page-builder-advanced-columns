@@ -5,7 +5,8 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_PageBuilder:etc/content_type.xsd">
-    <type name="column">
+    <type name="column"
+          preview_component="NortN_PageBuilderAdvancedColumns/js/content-type/column/preview">
         <appearances>
             <appearance name="full-height"
                         preview_template="NortN_PageBuilderAdvancedColumns/content-type/column/full-height/preview">
